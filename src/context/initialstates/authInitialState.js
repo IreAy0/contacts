@@ -1,7 +1,8 @@
 export default{
     auth: {
         loading: false,
-        user: null,
+        data: null,
+        error: null
     
     },
 };

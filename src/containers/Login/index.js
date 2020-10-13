@@ -1,10 +1,14 @@
-import React from 'react'
+import React , {useEffect} from 'react'
+import LoginUi from '../../layout/Login'
+import useForm from './useForm'
 
 const LoginContainer = () => {
+
+    useEffect(() => {
+    
+    }, [])
     return (
-        <div>
-            login
-        </div>
+      <LoginUi form={useForm()} />
     )
 }
 
