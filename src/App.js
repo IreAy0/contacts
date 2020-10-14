@@ -8,6 +8,7 @@ import isAuth from './utils/isAuth';
 
 const RenderRoute = (route)=>{
   const history = useHistory()
+  document.title = route.title || 'Truly Contacts'
   if(route.needsAuth && !isAuth()){
     history.push("/auth/login");
   }
