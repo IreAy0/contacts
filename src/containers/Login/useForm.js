@@ -18,12 +18,14 @@ export default () => {
 
     console.log("authstate", loading );
 
-    // useEffect(() => {
+    useEffect(() => {
      
-    //     if(data){
-    //         history.push("/auth/login")
-    //     }
-    // }, [data])
+        if(data){
+            if(data.user){
+                history.push('/')
+            }
+        }
+    }, [data])
 
 
 
@@ -40,7 +42,7 @@ export default () => {
 
 
   const onSubmit = () => {
-   login(login)(authDispatch)
+   login(form)(authDispatch)
     // register(form)(authDispatch)
 }
 

@@ -1,17 +1,32 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, useHistory} from 'react-router-dom'
 import { GlobalProvider } from './context/Provider';
 import routes from './routes';
+import isAuth from './utils/isAuth';
+
+
+
+const RenderRoute = (route)=>{
+  const history = useHistory()
+  if(route.needsAuth && !isAuth()){
+    history.push("/auth/login");
+  }
+  return (
+    <Route path={route.path} exact 
+    render={(props)=><route.component {...props}/>}>
+
+    </Route>
+  )
+}
+
 
 function App() {
+
   return (
    <GlobalProvider>
   <Router>
     <Switch>
-      {routes.map((route, index) =>(<Route key={index} path={route.path} exact 
-      render={(props)=><route.component {...props}/>}>
-
-      </Route>))}
+      {routes.map((route, index) =>(<RenderRoute {...route} key={index}></RenderRoute>))}
     </Switch>
   </Router>
    </GlobalProvider>

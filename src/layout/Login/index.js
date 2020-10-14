@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 import Header from '../../components/Header';
 
@@ -63,8 +64,13 @@ const LoginUi= ({
                    }
                      
     </div>
-   
-        </Form>
+    <div className="py-1 px-2 rounded border items-center my-2">
+    <p className="text-sm">Need an account? <Link className="text-blue-500" to="/auth/register"> Register</Link></p>
+    
+    </div>
+
+     
+         </Form>
 
 
         </div>
