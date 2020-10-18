@@ -4,21 +4,19 @@ import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header'
 import getContacts from '../../context/actions/contacts/getContacts'
 import {GlobalContext} from '../../context/Provider'
+import ContactsListUI from '../../layout/contacts/List'
 
 const ContactsContainer = () => {
-    const context = useContext(GlobalContext)
+    const {contactsDispatch, contactsState} = useContext(GlobalContext)
 
 const history = useHistory()
  useEffect(() => {
-getContacts(history);
+getContacts(history)(contactsDispatch);
  }, []);
 
-    console.log("context", context);
+    console.log("context", contactsDispatch);
     return (
-        <div>
-            <Header />
-            <h1>contacts</h1>
-        </div>
+       <ContactsListUI state={contactsState} />
     )
 }
  

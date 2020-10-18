@@ -1,10 +1,20 @@
 import React from 'react'
-import {Link, useLocation} from 'react-router-dom'
+import { useContext } from 'react';
+import {Link, useHistory, useLocation} from 'react-router-dom'
+import logout from '../../context/actions/auth/logout';
+import { GlobalContext } from '../../context/Provider';
 
 
 const Header = () => {
     const {pathname} = useLocation();
+    const history = useHistory()
 
+const {contactsDispatch: dispatch} = useContext(GlobalContext)
+
+ const handleUserLogout  = () => {
+    logout(history)(dispatch)
+  }
+  
 
     return (
         <div>
@@ -54,7 +64,7 @@ const Header = () => {
 </svg>
 			</span>
 			Create Contact</Link>)}
-			{pathname === '/' && (<Link to ="" class="hover:bg-red-600 rounded hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-red-800 text-red-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
+			{pathname === '/' && (<Link to ="" onClick={handleUserLogout} class="hover:bg-red-600 rounded hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-red-800 text-red-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
 			<span className="inline-flex">
 			<svg xmlns="http://www.w3.org/2000/svg" className="h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
