@@ -23,7 +23,7 @@ const routes=[
          needsAuth: true,
     },
      {
-        path:'/contacts/create',
+        path:'/contacts',
         component: CreateContactComponent,
          title:'Create Contact',
          needsAuth: true,
