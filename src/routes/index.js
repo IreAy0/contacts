@@ -3,8 +3,6 @@ import LoginComponent from '../containers/Login';
 import ContactsComponent from '../containers/Contacts';
 import CreateContactComponent from '../containers/CreateContact'
 
-
-
 const routes=[
     {
         path:'/auth/register',
@@ -30,6 +28,7 @@ const routes=[
          title:'Create Contact',
          needsAuth: true,
     },
+
 ]
 
 export default routes;

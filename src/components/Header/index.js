@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import {Link, useHistory, useLocation} from 'react-router-dom'
 import logout from '../../context/actions/auth/logout';
 import { GlobalContext } from '../../context/Provider';
-
+import isAuthenticated from '../../utils/isAuth';
 
 const Header = () => {
     const {pathname} = useLocation();
@@ -41,14 +41,14 @@ const {contactsDispatch: dispatch} = useContext(GlobalContext)
   </button>
 </div>
 <div class="flex md:hidden">
-{pathname === '/' && (<Link to="/contacts/create" class="hover:bg-blue-700 rounded-full h-10 w-10 justify-center hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-blue-800 text-blue-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
+{isAuthenticated() && (<Link to="/contacts/create" class="hover:bg-blue-700 rounded-full h-10 w-10 justify-center hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-blue-800 text-blue-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
 			<span className="inline-flex">
 			<svg xmlns="http://www.w3.org/2000/svg" className="h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
 </svg>
 			</span>
 		</Link>)}
-		{pathname === '/' && (<Link to="" class="hover:bg-red-600 h-10 w-10 rounded-full justify-center hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-red-800 text-red-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
+		{pathname === '/' && (<Link to="" class="hover:bg-red-600 h-10 w-10 rounded-full justify-center hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-red-800 text-red-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2" >
 			<span className="inline-flex">
 			<svg xmlns="http://www.w3.org/2000/svg" className="h-6"fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -56,15 +56,17 @@ const {contactsDispatch: dispatch} = useContext(GlobalContext)
 			</span>
 		</Link>)}
       </div>
+    
       <div class="md:flex hidden">
-       {pathname === '/' &&  ( <Link to="/contacts/create" class="hover:bg-blue-700 rounded hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-blue-800 text-blue-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
+       {isAuthenticated() &&  ( <Link to="/contacts/create" class="hover:bg-blue-700 rounded hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-blue-800 text-blue-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
 			<span className="inline-flex">
 			<svg xmlns="http://www.w3.org/2000/svg" className="h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
 </svg>
 			</span>
 			Create Contact</Link>)}
-			{pathname === '/' && (<Link to ="" onClick={handleUserLogout} class="hover:bg-red-600 rounded hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-red-800 text-red-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
+
+			{isAuthenticated() && (<Link to ="" onClick={handleUserLogout} class="hover:bg-red-600 rounded hover:text-white transition-all duration-150 ease-in-outtext-center flex items-center border border-red-800 text-red-700 bg-white px-2 py-1 md:px-4 md:py-2 m-2">
 			<span className="inline-flex">
 			<svg xmlns="http://www.w3.org/2000/svg" className="h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

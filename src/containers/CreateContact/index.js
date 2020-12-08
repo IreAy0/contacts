@@ -1,14 +1,14 @@
 import React from 'react'
-import Header from '../../components/Header'
+import CreateContact from '../../layout/contacts/Create'
 
 const CreateContactsContainer = () => {
     return (
-        <div>
-            <Header/>
-            create-contact
-            
-        </div>
-
+        
+           
+           <div>
+               CreateContact
+           </div>
+          
     )
 }
 
