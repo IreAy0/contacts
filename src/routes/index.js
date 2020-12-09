@@ -4,7 +4,8 @@ import ContactsComponent from '../containers/Contacts';
 import CreateContactComponent from '../containers/CreateContact'
 
 const routes=[
-    {
+ 
+{    
         path:'/auth/register',
         component: RegisterComponent,
         title:'Register',
@@ -16,19 +17,20 @@ const routes=[
          title:'Login',
          needsAuth: false,
     },
+    {
+        
+        path:'/contacts/create',
+        component: CreateContactComponent,
+         title:'Create Contact',
+         needsAuth: true,
+    },
      {
         path:'/',
         component: ContactsComponent,
          title:'Contacts',
          needsAuth: true,
     },
-     {
-        path:'/contacts',
-        component: CreateContactComponent,
-         title:'Create Contact',
-         needsAuth: true,
-    },
-
+    
 ]
 
 export default routes;
